@@ -64,7 +64,7 @@ const Home = () => {
 
         <div className="relative z-20 mx-auto w-full max-w-7xl px-4 pb-10 text-center sm:px-6 sm:pb-8 lg:px-8">
           <h1 className="mb-4 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-            ยินดีต้อนรับสู่ E-Book Mart
+            ยินดีต้อนรับสู่ Nextread-Ebook-Strore
           </h1>
           <p className="mx-auto mb-8 max-w-3xl text-base leading-relaxed text-white/90 sm:text-lg lg:text-xl">
             ร้านหนังสืออิเล็กทรอนิกส์ชั้นนำ รวมหนังสือคุณภาพจากนักเขียนชั้นนำ

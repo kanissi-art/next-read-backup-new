@@ -1,7 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingCart, Heart, User, LogOut, BookOpen, Menu, X } from 'lucide-react';
+import { ShoppingCart, Heart, User, LogOut, Menu, X } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
+import BrandMark from './BrandMark';
 import { useState } from 'react';
 
 
@@ -24,8 +25,8 @@ const Navbar = () => {
           {/* Logo */}
           <div className="min-w-0">
             <Link to="/" className="flex items-center gap-2">
-              <BookOpen className="h-7 w-7 shrink-0 text-primary-600 sm:h-8 sm:w-8" />
-              <span className="whitespace-nowrap text-lg font-bold text-gray-900 sm:text-xl">E-Book Mart</span>
+              <BrandMark className="h-9 w-9 shrink-0 sm:h-10 sm:w-10" />
+              <span className="whitespace-nowrap text-lg font-bold text-gray-900 sm:text-xl">Nextread-Ebook-Strore</span>
             </Link>
           </div>
 

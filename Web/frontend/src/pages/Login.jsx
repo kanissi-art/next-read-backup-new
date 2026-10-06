@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { BookOpen, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import BrandMark from '../components/common/BrandMark';
 import toast from 'react-hot-toast';
 
 const Login = () => {
@@ -33,10 +34,10 @@ const Login = () => {
         {/* Logo */}
         <div className="text-center">
           <div className="flex justify-center">
-            <BookOpen className="h-16 w-16 text-primary-600" />
+            <BrandMark className="h-16 w-16" />
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-            เข้าสู่ระบบ E-Book Mart
+            เข้าสู่ระบบ Nextread-Ebook-Strore
           </h2>
           <p className="mt-2 text-sm text-gray-600">
             หรือ{' '}

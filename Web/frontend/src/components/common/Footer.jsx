@@ -1,4 +1,4 @@
-import { BookOpen } from 'lucide-react';
+import BrandMark from './BrandMark';
 
 const Footer = () => {
   return (
@@ -8,8 +8,8 @@ const Footer = () => {
           {/* Logo */}
           <div className="col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <BookOpen className="h-8 w-8 text-primary-400" />
-              <span className="text-xl font-bold">E-Book Mart</span>
+              <BrandMark className="h-9 w-9 shrink-0" />
+              <span className="text-xl font-bold">Nextread-Ebook-Strore</span>
             </div>
             <p className="text-gray-400">
               ร้านหนังสืออิเล็กทรอนิกส์ชั้นนำ รวมหนังสือคุณภาพจากนักเขียนชั้นนำ
@@ -46,7 +46,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2026 E-Book Mart. All rights reserved.</p>
+          <p>&copy; 2026 Nextread-Ebook-Strore. All rights reserved.</p>
         </div>
       </div>
     </footer>
