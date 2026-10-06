@@ -1,0 +1,60 @@
+┌─────────────┐         ┌──────────────┐         ┌─────────────┐
+│   roles     │         │    users     │         │ categories  │
+├─────────────┤         ├──────────────┤         ├─────────────┤
+│ id (PK)     │◄────────│ role_id (FK) │         │ id (PK)     │
+│ name        │         │ id (PK)      │         │ name        │
+│ description │         │ email        │         │ description │
+└─────────────┘         │ password     │         └──────┬──────┘
+                        │ name         │                │
+                        │ phone        │                │
+                        │ created_at   │                │
+                        └──────┬───────┘                │
+                               │                        │
+                               │                        │
+                        ┌──────┴───────┐                │
+                        │    carts     │                │
+                        ├──────────────┤                │
+                        │ id (PK)      │                │
+                        │ user_id (FK) │                │
+                        │ created_at   │                │
+                        │ status       │                │
+                        └──────┬───────┘                │
+                               │                        │
+                               │                        │
+┌─────────────┐         ┌──────┴───────┐         ┌──────┴──────┐
+│   authors   │         │  cart_items  │         │   ebooks    │
+├─────────────┤         ├──────────────┤         ├─────────────┤
+│ id (PK)     │◄────────│ author_id(FK)│◄────────│ id (PK)     │
+│ name        │         │ id (PK)      │         │ category_id │
+│ bio         │         │ cart_id (FK) │         │ title       │
+└─────────────┘         │ ebook_id(FK) │         │ author_id   │
+                        │ quantity     │         │ price       │
+                        │ price        │         │ description │
+                        └──────────────┘         │ cover_url   │
+                                                 │ download_url│
+                                                 │ stock       │
+                                                 │ is_active   │
+                                                 └─────────────┘
+
+┌─────────────┐         ┌──────────────┐         ┌─────────────┐
+│   orders    │         │ order_items  │         │  payments   │
+├─────────────┤         ├──────────────┤         ├─────────────┤
+│ id (PK)     │◄────────│ order_id (FK)│         │ id (PK)     │
+│ user_id (FK)│         │ id (PK)      │         │ order_id(FK)│
+│ total_amount│         │ ebook_id (FK)│         │ amount      │
+│ status      │         │ quantity     │         │ method      │
+│ created_at  │         │ price        │         │ slip_url    │
+│ updated_at  │         │ subtotal     │         │ status      │
+└──────┬──────┘         └──────────────┘         │ paid_at     │
+       │                                          └─────────────┘
+       │
+       │
+┌──────┴──────┐
+│download_links│
+├──────────────┤
+│ id (PK)      │
+│ order_item_id│
+│ token        │
+│ expires_at   │
+│ downloaded_at│
+└──────────────┘
