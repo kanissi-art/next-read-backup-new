@@ -7,7 +7,8 @@ body {
   font-family: 'Kanit', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f8fafc;
+  background-color: #fff8fb;
+  color: #3e2d37;
 }
 
 * {
