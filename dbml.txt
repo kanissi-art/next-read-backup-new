@@ -1,0 +1,47 @@
+Table roles {
+  id int [pk, increment]
+  name varchar(50) [not null, unique]
+  description text
+  created_at timestamp [default: `now()`]
+}
+
+Table users {
+  id int [pk, increment]
+  role_id int [ref: > roles.id, not null]
+  email varchar(100) [not null, unique]
+  password_hash varchar(255) [not null]
+  name varchar(100) [not null]
+  phone varchar(20)
+  address text
+  is_active boolean [default: true]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table categories {
+  id int [pk, increment]
+  name varchar(100) [not null, unique]
+  description text
+  is_active boolean [default: true]
+  created_at timestamp [default: `now()`]
+}
+
+Table authors {
+  id int [pk, increment]
+  name varchar(100) [not null]
+  bio text
+  created_at timestamp [default: `now()`]
+}
+
+Table ebooks {
+  id int [pk, increment]
+  category_id int [ref: > categories.id, not null]
+  author_id int [ref: > authors.id, not null]
+  title varchar(200) [not null]
+  description text
+  price decimal(10,2) [not null, check: `price > 0`]
+  cover_url varchar(500)
+  download_url varchar(500)
+  stock int [default: 0, check: `stock >= 0`]
+  is_active boolean [default: true]
+ 

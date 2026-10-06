@@ -1,0 +1,147 @@
+erDiagram
+    roles {
+        integer id PK
+        varchar name
+        text description
+        timestamp created_at
+    }
+    
+    users {
+        integer id PK
+        integer role_id FK
+        varchar email
+        varchar password_hash
+        varchar name
+        varchar phone
+        text address
+        boolean is_active
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    authors {
+        integer id PK
+        varchar name
+        text bio
+        timestamp created_at
+    }
+    
+    categories {
+        integer id PK
+        varchar name
+        text description
+        boolean is_active
+        timestamp created_at
+    }
+    
+    ebooks {
+        integer id PK
+        integer category_id FK
+        integer author_id FK
+        varchar title
+        text description
+        numeric price
+        varchar cover_url
+        varchar download_url
+        integer stock
+        boolean is_active
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    carts {
+        integer id PK
+        integer user_id FK
+        varchar status
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    cart_items {
+        integer id PK
+        integer cart_id FK
+        integer ebook_id FK
+        integer quantity
+        numeric price
+        timestamp added_at
+    }
+    
+    orders {
+        integer id PK
+        integer user_id FK
+        numeric total_amount
+        varchar status
+        varchar payment_slip_url
+        text notes
+        timestamp created_at
+        timestamp updated_at
+        text payment_method
+    }
+    
+    order_items {
+        integer id PK
+        integer order_id FK
+        integer ebook_id FK
+        integer quantity
+        numeric price
+        numeric subtotal
+    }
+    
+    payments {
+        integer id PK
+        integer order_id FK
+        numeric amount
+        varchar payment_method
+        varchar slip_url
+        varchar status
+        timestamp paid_at
+        timestamp created_at
+    }
+    
+    download_links {
+        integer id PK
+        integer order_item_id FK
+        varchar token
+        timestamp expires_at
+        timestamp downloaded_at
+        timestamp created_at
+    }
+    
+    reviews {
+        integer id PK
+        integer user_id FK
+        integer ebook_id FK
+        integer rating
+        text comment
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    wishlists {
+        integer id PK
+        integer user_id FK
+        integer ebook_id FK
+        timestamp created_at
+    }
+
+    %% Relationships
+    roles ||--o{ users : "has"
+    users ||--o{ carts : "owns"
+    users ||--o{ orders : "places"
+    users ||--o{ reviews : "writes"
+    users ||--o{ wishlists : "creates"
+    
+    authors ||--o{ ebooks : "writes"
+    categories ||--o{ ebooks : "categorizes"
+    
+    ebooks ||--o{ cart_items : "added to"
+    ebooks ||--o{ order_items : "ordered in"
+    ebooks ||--o{ reviews : "receives"
+    ebooks ||--o{ wishlists : "saved in"
+    
+    carts ||--o{ cart_items : "contains"
+    
+    orders ||--o{ order_items : "contains"
+    orders ||--|| payments : "paid via (1-to-1)"
+    
+    order_items ||--|| download_links : "has (1-to-1)"
